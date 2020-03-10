@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index'),
   usersRouter = require('./routes/users');
 
 const app = express();
+require('dotenv').config();
 
 app.engine('html', es6Renderer);
 app.set('views', './views');
