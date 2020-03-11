@@ -14,12 +14,12 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* POST review to db */
+/* POST comments to db */
 router.post('/', async function(req, res) {
-  const { car_id, review_text } = req.body;
-  const postData = await CarModel.addReview(car_id, review_text);
+  const { car_id, user_id, comment } = req.body;
+  const postData = await CarModel.addComment(car_id, user_id, comment);
   console.log(postData);
-  res.sendStatus(200);
+  res.redirect('back');
 });
 
 module.exports = router;
