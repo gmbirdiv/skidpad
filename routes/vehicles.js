@@ -3,13 +3,15 @@ const router = express.Router();
 const CarModel = require('../model/carModel');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+  const cars = await CarModel.getAllCars();
   res.render('template', {
     locals: {
-      title: 'SkidPad.io'
+      title: 'SkidPad.io',
+      cars: cars
     },
     partials: {
-      partial: 'partial-index'
+      partial: 'partial-vehicles'
     }
   });
 });

@@ -11,9 +11,7 @@
   </div>
 </section>
 <div class="buttons">
-  <button class="vehicle-btn button is-dark">Vehicles</button>
+  <a href="/vehicles"
+    ><button class="vehicle-btn button is-dark">Vehicles</button></a
+  >
 </div>
-
-${cars.map(entry => `
-<p><a href="reviews/${entry.id}">${entry.make} ${entry.model}</a></p>
-` ).join('')}
