@@ -14,4 +14,12 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* POST review to db */
+router.post('/', async function(req, res) {
+  const { car_id, review_text } = req.body;
+  const postData = await CarModel.addReview(car_id, review_text);
+  console.log(postData);
+  res.sendStatus(200);
+});
+
 module.exports = router;

@@ -41,6 +41,19 @@ class CarModel {
       console.error('ERROR: ', error);
     }
   }
+  static async addReview(car_id, review_text) {
+    try {
+      const res = await db.one(
+        `INSERT INTO reviews (reviewer_id, car_id, review_text) VALUES ($1, $2, $3) RETURNING id`,
+        [1, car_id, review_text]
+      );
+      console.log(res);
+      return res;
+    } catch (error) {
+      console.error('ERROR: ', error);
+      return error;
+    }
+  }
 }
 
 module.exports = CarModel;
