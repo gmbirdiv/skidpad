@@ -5,8 +5,9 @@ const express = require('express'),
   es6Renderer = require('express-es6-template-engine');
 
 const indexRouter = require('./routes/index'),
-  vehiclesRouter = require('./routes/vehicles');
-usersRouter = require('./routes/users');
+  vehiclesRouter = require('./routes/vehicles'),
+  reviewRouter = require('./routes/reviews'),
+  usersRouter = require('./routes/users');
 
 const app = express();
 require('dotenv').config();
@@ -24,5 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/vehicles', vehiclesRouter);
+app.use('/reviews', reviewRouter);
 
 module.exports = app;

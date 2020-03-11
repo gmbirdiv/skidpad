@@ -1,0 +1,35 @@
+<ul>
+  ${data.map(entry => `
+  <li>Make: ${entry.make}</li>
+  <li>Model: ${entry.model}</li>
+  <li>Year: ${entry.year}</li>
+  ` ).join('')}
+</ul>
+<hr />
+<h2>Reviews</h2>
+<ul>
+  ${rev.map(entry => `
+  <li><strong>Review:</strong> ${entry.review_text}</li>
+  <hr />
+
+  ` ).join('')}
+</ul>
+<hr />
+<form action="/" method="post">
+  <input type="hidden" name="bookid" value="${data[0].id}" />
+  <label
+    >Title:
+    <input type="text" name="review_title" placeholder="Review Title" />
+  </label>
+  <label
+    >My Review:
+    <textarea
+      name="review_text"
+      placeholder="My review..."
+      id=""
+      cols="30"
+      rows="10"
+    ></textarea>
+    <button type="submit">Submit Review</button>
+  </label>
+</form>
