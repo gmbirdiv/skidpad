@@ -14,6 +14,8 @@ const indexRouter = require('./routes/index'),
 const app = express();
 require('dotenv').config();
 
+
+
 app.engine('html', es6Renderer);
 app.set('views', './views');
 app.set('view engine', 'html');
@@ -21,7 +23,7 @@ app.set('view engine', 'html');
 app.use(
   session({
     store: new FileStore(),
-    secret: 'm3oneDay',
+    secret: process.env['SESH_SECRET'],
     resave: false,
     saveUninitialized: false,
     is_logged_in: false
