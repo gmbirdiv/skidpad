@@ -1,3 +1,19 @@
-Testing ${cars.map(entry => `
+<section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        SkidPad.io
+      </h1>
+      <h2 class="subtitle">
+        More than just transportation.
+      </h2>
+    </div>
+  </div>
+</section>
+<div class="buttons">
+  <button class="vehicle-btn button is-dark">Vehicles</button>
+</div>
+
+${cars.map(entry => `
 <p><a href="reviews/${entry.id}">${entry.make} ${entry.model}</a></p>
 ` ).join('')}
