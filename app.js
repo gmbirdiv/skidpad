@@ -1,3 +1,6 @@
+require('dotenv').config();
+
+
 const express = require('express'),
   session = require('express-session'),
   FileStore = require(`session-file-store`)(session)
@@ -12,7 +15,7 @@ const indexRouter = require('./routes/index'),
   usersRouter = require('./routes/users');
 
 const app = express();
-require('dotenv').config();
+
 
 
 

@@ -28,16 +28,17 @@ class User {
     async loginUser(){
         try{
             const response = await db.one(`SELECT id, username, password FROM users WHERE username = $1;`,[this.username]);
-        
+            console.log(response)
             // console.log(response,'MOFO')
 
             const isValid = this.checkPassword(response.password);
 
             if(!!isValid) {
                 const {id, username} = response;
-                return { isValid, id, username}
+                return { isValid, user_id:id, username}
             } else {
                 console.log('failure')
+
             }
             // return isValid; 
         }catch(e) {
