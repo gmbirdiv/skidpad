@@ -41,7 +41,7 @@ router.post('/login', async function(req,res,next){
 
   if(!!loginResponse.isValid){
     req.session.is_logged_in = loginResponse.isValid; 
-    req.session.id = loginResponse.id; 
+    req.session.user_id = loginResponse.user_id; 
     req.session.username = loginResponse.username; 
     res.redirect('/')
   } else {
