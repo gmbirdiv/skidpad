@@ -47,7 +47,6 @@ router.post('/login', async function(req, res, next) {
 });
 
 
-}); 
 
 
 const { check, validationResult } =  require('express-validator');
