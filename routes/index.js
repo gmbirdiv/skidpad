@@ -19,8 +19,9 @@ router.get('/', function(req, res, next) {
 router.post('/', async function(req, res) {
   const { car_id, user_id, comment } = req.body;
   const postData = await CarModel.addComment(car_id, user_id, comment);
+  const id = postData.car_id
   console.log(postData);
-  res.redirect('back');
+  res.redirect("back");
 });
 
 module.exports = router;
