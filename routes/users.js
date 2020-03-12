@@ -46,9 +46,9 @@ router.post('/login', async function(req, res, next) {
   }
 });
 
-<<<<<<< HEAD
 
 }); 
+
 
 const { check, validationResult } =  require('express-validator');
 
@@ -68,16 +68,6 @@ router.post('/signup',[
   }  
   const user = new UserModel(null,username, email, hash);
   user.addUser(); 
-=======
-router.post('/signup', function(req, res, next) {
-  const { username, email, password } = req.body;
-
-  const salt = bcrypt.genSaltSync(10);
-  const hash = bcrypt.hashSync(password, salt);
-
-  const user = new UserModel(null, username, email, hash);
-  user.addUser();
->>>>>>> 161b7b7725e14f5bfc18b28b21e09c5cf2fe6433
   res.sendStatus(200);
 });
 
