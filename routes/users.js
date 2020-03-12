@@ -46,14 +46,28 @@ router.post('/login', async function(req, res, next) {
   }
 });
 
-router.post('/signup', function(req, res, next) {
-  const { username, email, password } = req.body;
+
+}); 
+
+
+const { check, validationResult } =  require('express-validator');
+
+router.post('/signup',[
+  check ('username').isLength({min: 1}).withMessage('Must have a username'),
+  check ('email').isLength({min: 1}).withMessage('Must have an email address'), 
+  check ('password').isLength({min: 1}).withMessage('Must have a password')
+], async function(req,res,next){
+  
+  const { username, email, password} = req.body; 
 
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(password, salt);
-
-  const user = new UserModel(null, username, email, hash);
-  user.addUser();
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }  
+  const user = new UserModel(null,username, email, hash);
+  user.addUser(); 
   res.sendStatus(200);
 });
 
