@@ -44,7 +44,7 @@ class CarModel {
   static async addComment(car_id, user_id, comment) {
     try {
       const res = await db.one(
-        `INSERT INTO comments (user_id, car_id, comment) VALUES ($1, $2, $3) RETURNING id`,
+        `INSERT INTO comments (car_id, user_id, comment) VALUES ($1, $2, $3) RETURNING id`,
         [car_id, user_id, comment]
       );
       console.log(res);

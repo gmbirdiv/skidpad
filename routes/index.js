@@ -6,7 +6,8 @@ const CarModel = require('../model/carModel');
 router.get('/', function(req, res, next) {
   res.render('template', {
     locals: {
-      title: 'SkidPad.io'
+      title: 'SkidPad.io',
+      is_logged_in : req.session.is_logged_in
     },
     partials: {
       partial: 'partial-index'
@@ -18,8 +19,9 @@ router.get('/', function(req, res, next) {
 router.post('/', async function(req, res) {
   const { car_id, user_id, comment } = req.body;
   const postData = await CarModel.addComment(car_id, user_id, comment);
+  const id = postData.car_id
   console.log(postData);
-  res.redirect('back');
+  res.redirect("back");
 });
 
 module.exports = router;
