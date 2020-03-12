@@ -54,12 +54,16 @@ class CarModel {
       return error;
     }
   }
-  static async getComById(id) {
+  static async getComUserByCarID(id) {
     try {
-      const res = await db.any(`SELECT *
-    FROM comments
-    WHERE comments.car_id = ${id};`);
-      console.log('REV ID QUERY: ', res);
+      const res = await db.any(`SELECT comments.comment, users.username, cars.make, cars.model
+      FROM comments
+        INNER JOIN cars
+          ON comments.car_id = cars.id
+         INNER JOIN users
+          on comments.user_id = users.id
+         WHERE comments.car_id = ${id};`);
+      console.log('Comment and User by CarID QUERY: ', res);
       return res;
     } catch (error) {
       console.error('ERROR: ', error);
