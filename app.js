@@ -7,6 +7,8 @@ const express = require('express'),
   path = require('path'),
   cookieParser = require('cookie-parser'),
   logger = require('morgan'),
+  expressValidator = require('express-validator'),
+  flash = require('express-flash-notification'),
   es6Renderer = require('express-es6-template-engine');
 
 const indexRouter = require('./routes/index'),
@@ -38,6 +40,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash(app)); 
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
