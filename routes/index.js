@@ -6,7 +6,8 @@ const CarModel = require('../model/carModel');
 router.get('/', function(req, res, next) {
   res.render('template', {
     locals: {
-      title: 'SkidPad.io'
+      title: 'SkidPad.io',
+      is_logged_in : req.session.is_logged_in
     },
     partials: {
       partial: 'partial-index'

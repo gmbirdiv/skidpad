@@ -13,7 +13,10 @@ router.get('/:id?', async (req, res, next) => {
       title: data[0].title,
       data: data,
       rev: rev,
-      com: com
+      com: com,
+      is_logged_in : req.session.is_logged_in,
+      user_id: req.session.user_id
+
     },
     partials: {
       partial: 'partial-reviews'

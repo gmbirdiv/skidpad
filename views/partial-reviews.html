@@ -24,7 +24,7 @@ ${com.map(entry => `
 <form action="/" method="post">
   <input type="hidden" name="car_id" value="${data[0].id}" />
   <!-- change below to take in userid map -->
-  <input type="hidden" name="user_id" value="${data[0].id}" />
+  <input type="hidden" name="user_id" value=${user_id}>
   <label
     >Reply:
     <textarea

@@ -11,7 +11,8 @@ router.get('/', function(req, res, next) {
 router.get('/signup', function(req, res, next) {
   res.render('template', {
     locals: {
-      title: 'User Sign Up'
+      title: 'User Sign Up',
+      is_logged_in : req.session.is_logged_in
     },
     partials: {
       partial: 'partial-signup'
@@ -22,7 +23,9 @@ router.get('/signup', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('template', {
     locals: {
-      title: 'User Login'
+      title: 'User Login',
+      is_logged_in : req.session.is_logged_in
+
     },
     partials: {
       partial: 'partial-login'
@@ -61,5 +64,12 @@ router.post('/signup', function(req,res,next){
   user.addUser(); 
   res.sendStatus(200);
 }); 
+
+router.get('/logout', function(req,res){
+  req.session.destroy(); 
+  res.redirect('/');
+
+});
+
 
 module.exports = router;

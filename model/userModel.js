@@ -38,7 +38,7 @@ class User {
                 return { isValid, user_id:id, username}
             } else {
                 console.log('failure')
-
+                return isValid; 
             }
             // return isValid; 
         }catch(e) {

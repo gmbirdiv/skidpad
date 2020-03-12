@@ -25,12 +25,23 @@
         <!-- navbar items -->
         <div class="navbar-item">
           <div class="buttons">
+            ${
+              (!!is_logged_in) ?
+              `
+              <a class="button is-dark" href="/users/logout">
+                Logout
+              </a>
+              ` 
+              :
+              `
+              <a class="button is-dark" href="/users/login">
+              Login
+            </a>
             <a class="button is-dark" href="/users/signup">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-dark" href="/users/login">
-              Log in
-            </a>
+            `
+          }
           </div>
         </div>
       </div>

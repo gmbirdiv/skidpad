@@ -8,7 +8,8 @@ router.get('/', async function(req, res, next) {
   res.render('template', {
     locals: {
       title: 'SkidPad.io',
-      cars: cars
+      cars: cars,
+      is_logged_in : req.session.is_logged_in
     },
     partials: {
       partial: 'partial-vehicles'
