@@ -51,7 +51,7 @@ app.use('/reviews', reviewRouter);
 
 const getMakes  = async () => {
   return await axios ({
-    url: 'https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/474/modelyear/2015?format=json'
+    url: 'https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformakeyear/make/honda/modelyear/2015/vehicleType/passenger?format=json'
   })
 
 }
