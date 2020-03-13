@@ -6,7 +6,7 @@
   ` ).join('')}
 </ul>
 <hr />
-<h2>Reviews</h2>
+<h1>Review</h1>
 <ul>
   ${rev.map(entry => `
   <li><strong>Review:</strong> ${entry.review_text}</li>
@@ -15,21 +15,28 @@
   ` ).join('')}
 </ul>
 <hr />
+<h1>Comments:</h1>
+${com.map(entry => `
+<li><strong>User: ${entry.username}</strong> ${entry.comment}</li>
+<hr />
+
+` ).join('')} ${ (!!is_logged_in) ? `
 <form action="/" method="post">
   <input type="hidden" name="car_id" value="${data[0].id}" />
+  <!-- change below to take in userid map -->
+  <input type="hidden" name="user_id" value="${user_id}" />
   <label
-    >Title:
-    <input type="text" name="review_title" placeholder="Review Title" />
-  </label>
-  <label
-    >My Review:
+    >Reply:
     <textarea
-      name="review_text"
-      placeholder="My review..."
+      name="comment"
+      placeholder="My response..."
       id=""
       cols="30"
       rows="10"
     ></textarea>
-    <button type="submit">Submit Review</button>
+    <button type="submit">Submit</button>
   </label>
 </form>
+` : `
+<p>Login to join the conversation</p>
+` }

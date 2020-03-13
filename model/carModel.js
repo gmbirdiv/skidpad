@@ -41,17 +41,32 @@ class CarModel {
       console.error('ERROR: ', error);
     }
   }
-  static async addReview(car_id, review_text) {
+  static async addComment(car_id, user_id, comment) {
     try {
       const res = await db.one(
-        `INSERT INTO reviews (reviewer_id, car_id, review_text) VALUES ($1, $2, $3) RETURNING id`,
-        [1, car_id, review_text]
+        `INSERT INTO comments (car_id, user_id, comment) VALUES ($1, $2, $3) RETURNING id`,
+        [car_id, user_id, comment]
       );
       console.log(res);
       return res;
     } catch (error) {
       console.error('ERROR: ', error);
       return error;
+    }
+  }
+  static async getComUserByCarID(id) {
+    try {
+      const res = await db.any(`SELECT comments.comment, users.username, cars.make, cars.model
+      FROM comments
+        INNER JOIN cars
+          ON comments.car_id = cars.id
+         INNER JOIN users
+          on comments.user_id = users.id
+         WHERE comments.car_id = ${id};`);
+      console.log('Comment and User by CarID QUERY: ', res);
+      return res;
+    } catch (error) {
+      console.error('ERROR: ', error);
     }
   }
 }
