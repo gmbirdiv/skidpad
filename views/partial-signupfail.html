@@ -1,0 +1,21 @@
+<h1>Sign Up</h1>
+<form action="/users/signup" method="POST">
+  <ul>
+    <label>
+      <input name="username" placeholder="Username" />
+      <br />
+      <input name="email" placeholder="email address" />
+      <p>
+        <input type="password" name="password" placeholder="password" />
+      </p>
+    </label>
+    <button type="submit">Sign up</button>
+  </ul>
+</form>
+<ul>
+  ${errors.map(entry => `
+  <li>Make: ${entry.username}</li>
+  <li>Model: ${entry.email}</li>
+  <li>Year: ${entry.password}</li>
+  ` ).join('')}
+</ul>
