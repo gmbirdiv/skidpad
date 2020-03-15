@@ -14,8 +14,6 @@
 </form>
 <ul>
   ${errors.map(entry => `
-  <li>Make: ${entry.username}</li>
-  <li>Model: ${entry.email}</li>
-  <li>Year: ${entry.password}</li>
+  <p>${entry.username}</p>
   ` ).join('')}
 </ul>

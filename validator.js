@@ -27,13 +27,12 @@ const userValidationRules = () => {
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
-  console.log('validate :', errors);
   if (errors.isEmpty()) {
     return next();
   }
   const extractedErrors = [];
   errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }));
-  console.log(extractedErrors);
+  console.log('extractedErrors = ', extractedErrors);
   return res.render('template', {
     locals: {
       title: 'Sign up',
