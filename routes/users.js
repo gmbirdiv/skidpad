@@ -42,7 +42,15 @@ router.post('/login', async function(req, res, next) {
     req.session.username = loginResponse.username;
     res.redirect('/');
   } else {
-    res.sendStatus(403);
+    res.render('template', {
+      locals: {
+        title: 'User Login',
+        is_logged_in: req.session.is_logged_in
+      },
+      partials: {
+        partial: 'partial-loginfail'
+      }
+    });
   }
 });
 
@@ -64,7 +72,6 @@ router.post('/signup', userValidationRules(), validate, async function(
       password: req.body.password
     })
     .then(user => res.json(user));
-  // res.sendStatus(200);
 });
 
 router.get('/logout', function(req, res) {
