@@ -6,7 +6,8 @@ const CarModel = require('../model/carModel');
 router.get('/', function(req, res, next) {
   res.render('template', {
     locals: {
-      title: 'SkidPad.io'
+      title: 'SkidPad.io',
+      is_logged_in: req.session.is_logged_in
     },
     partials: {
       partial: 'partial-index'
@@ -14,12 +15,19 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* POST review to db */
+/* POST comments to db */
 router.post('/', async function(req, res) {
-  const { car_id, review_text } = req.body;
-  const postData = await CarModel.addReview(car_id, review_text);
+  const { car_id, user_id, comment, likes, dislikes } = req.body;
+  const postData = await CarModel.addComment(
+    car_id,
+    user_id,
+    comment,
+    likes,
+    dislikes
+  );
+  const id = postData.car_id;
   console.log(postData);
-  res.sendStatus(200);
+  res.redirect('back');
 });
 
 module.exports = router;

@@ -6,12 +6,16 @@ router.get('/:id?', async (req, res, next) => {
   const id = req.params.id;
   const data = await CarModel.getById(id);
   const rev = await CarModel.getRevById(id);
+  const com = await CarModel.getComUserByCarID(id);
 
   res.render('template', {
     locals: {
       title: data[0].title,
       data: data,
-      rev: rev
+      rev: rev,
+      com: com,
+      is_logged_in: req.session.is_logged_in,
+      user_id: req.session.user_id
     },
     partials: {
       partial: 'partial-reviews'
