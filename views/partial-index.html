@@ -11,7 +11,120 @@
   </div>
 </section>
 <div class="buttons">
-  <a href="/vehicles"
-    ><button class="vehicle-btn button is-dark">Vehicles</button></a
-  >
+  <a href="/vehicles">
+    <button class="vehicle-btn button is-dark">Vehicles</button>
+  </a>
 </div>
+<div class="buttons">
+  <a href="/carrs">
+    <button class="vehicle-btn button is-dark">Carrs</button>
+  </a>
+</div>
+
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>Years</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+       <p>2020</p>
+       <p>2019</p>
+       <p>2018</p>
+       <p>2017</p>
+       <p>2016</p>
+       <p>2015</p>
+       <p>2014</p>
+       <p>2013</p>
+       <p>2012</p>
+       <p>2011</p>
+       <p>2010</p>
+       <p>2009</p>
+       <p>2008</p>
+       <p>2007</p>
+       <p>2006</p>
+       <p>2005</p>
+       <p>2004</p>
+       <p>2003</p>
+       <p>2002</p>
+       <p>2001</p>
+       <p>2000</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>Makes</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        ${makes.map(entry => `<a href="/carrs"><p>${entry.MakeName}</p></a>`).join('')}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>Models</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        ${carrs.map(entry => `<a href="reviews/2015${entry.Make_Name}${entry.Model_Name}"><p>${entry.Model_Name}</p></a>`).join('')}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Dropdown button</span>
+      <span class="icon is-small">
+        <!--fontawesome required for the icon-->
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a class="dropdown-item">
+        Other dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+      <hr class="dropdown-divider">
+      <a href="#" class="dropdown-item">
+        With a divider
+      </a>
+    </div>
+  </div>
+</div>
+

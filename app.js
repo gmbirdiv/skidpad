@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-
 const express = require('express'),
   session = require('express-session'),
   FileStore = require(`session-file-store`)(session)
@@ -11,15 +10,15 @@ const express = require('express'),
   flash = require('express-flash-notification'),
   es6Renderer = require('express-es6-template-engine');
   axios = require('axios'); 
+  // jquery = require('jquery');
 
 const indexRouter = require('./routes/index'),
   vehiclesRouter = require('./routes/vehicles'),
   reviewRouter = require('./routes/reviews'),
+  carrRouter = require('./routes/carrs')
   usersRouter = require('./routes/users');
 
 const app = express();
-
-
 
 
 app.engine('html', es6Renderer);
@@ -42,12 +41,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash(app)); 
-
+// app.use(jquery);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/vehicles', vehiclesRouter);
 app.use('/reviews', reviewRouter);
+app.use('/carrs', carrRouter);
 
 
 module.exports = app;
