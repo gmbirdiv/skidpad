@@ -28,7 +28,18 @@ const userValidationRules = () => {
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
-    return next();
+    return (
+      next(),
+      res.render('template', {
+        locals: {
+          title: 'SkidPad.io',
+          is_logged_in: req.session.is_logged_in
+        },
+        partials: {
+          partial: 'partial-index'
+        }
+      })
+    );
   }
   const extractedErrors = [];
   errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }));
