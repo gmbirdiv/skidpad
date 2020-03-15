@@ -32,11 +32,19 @@ const validate = (req, res, next) => {
   }
   const extractedErrors = [];
   errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }));
-  console.log('extractedErrors = ', extractedErrors);
+
+  const errorUser = extractedErrors[0];
+  const errorEmail = extractedErrors[1];
+  const errorPw = extractedErrors[2];
+
+  console.log('extracted errors :', extractedErrors);
+
   return res.render('template', {
     locals: {
       title: 'Sign up',
-      errors: extractedErrors,
+      errorUser: errorUser,
+      errorEmail: errorEmail,
+      errorPw: errorPw,
       is_logged_in: req.session.is_logged_in
     },
     partials: {

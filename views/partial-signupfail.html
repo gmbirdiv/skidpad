@@ -13,7 +13,7 @@
   </ul>
 </form>
 <ul>
-  ${errors.map(entry => `
-  <p>${entry.username}</p>
-  ` ).join('')}
+  <li>Username error: <strong>${errorUser.username}</strong></li>
+  <li>Email error: <strong>${errorEmail.email}</strong></li>
+  <li>Password error: <strong>${errorPw.password}</strong></li>
 </ul>
