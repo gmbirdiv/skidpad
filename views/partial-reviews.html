@@ -18,12 +18,12 @@
 <h1>Comments:</h1>
 ${com.map(entry => `
 <li><strong>User: ${entry.username}</strong> ${entry.comment}</li>
+<li>Likes: ${entry.likes} Dislikes: ${entry.dislikes}</li>
 <hr />
 
 ` ).join('')} ${ (!!is_logged_in) ? `
 <form action="/" method="post">
   <input type="hidden" name="car_id" value="${data[0].id}" />
-  <!-- change below to take in userid map -->
   <input type="hidden" name="user_id" value="${user_id}" />
   <label
     >Reply:
