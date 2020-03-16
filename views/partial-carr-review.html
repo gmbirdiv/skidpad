@@ -4,5 +4,46 @@
     <li>Model: ${model}</li>
     <li>Year: ${year}</li>
   
-  </ul>
+</ul>
+
+<hr />
+
+<h1>Review</h1>
+<ul>
+  ${rev.map(entry => `
+  <li><strong>Review:</strong> ${entry.review_text}</li>
+  <hr />
+
+  ` ).join('')}
+</ul>
+
+<h1>Comments:</h1>
+${com.map(entry => `
+<li><strong>User: ${entry.username}</strong> ${entry.comment}</li>
+<hr />
+
+` ).join('')} 
+
+${ (!!is_logged_in) ? `
+    <form action="/" method="post">
+      <input type="hidden" name="model_year" value="${year}" />
+      <input type="hidden" name="model_name" value="${model}" />
+      <!-- change below to take in userid map -->
+      <input type="hidden" name="user_id" value="${user_id}" />
+      <label
+        >Reply:
+        <textarea
+          name="comment"
+          placeholder="My response..."
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
+        <button type="submit">Submit</button>
+      </label>
+    </form>
+    ` : `
+    <p>Login or Sign up to join the conversation</p>
+    ` }
+    
  

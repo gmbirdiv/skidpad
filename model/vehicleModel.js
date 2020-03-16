@@ -32,17 +32,46 @@ class VehicleModel {
       }
   }
 
-  // static async getById(ModelYear, Make_Name, Model_Name){
-  //   try{
-  //     const response = await axios ({
-  //       url:
-  //     })
-  //   }catch(e){
-  //     return e 
-  //   }
-  // }
+  static async getRevById(Model_Name, ModelYear) {
+    try {
+    const res = await db.any(`SELECT *
+    FROM reviews
+    WHERE reviews.modelyear = ${ModelYear} AND reviews.modelname = '${Model_Name}';`);
+      console.log('REV ID QUERY: ', res);
+      return res;
+    } catch (error) {
+      console.error('ERROR: ', error);
+    }
+  }
 
-
+  static async addComment(Model_Name, ModelYear, user_id, comment) {
+    try {
+      const res = await db.one(
+        `INSERT INTO comments (modelname, modelyear, user_id, comment) VALUES ($1, $2, $3, $4) RETURNING id`,
+        [Model_Name, ModelYear, user_id, comment]
+      );
+      console.log(res);
+      return res;
+    } catch (error) {
+      console.error('ERROR: ', error);
+      return error;
+    }
+  }
+  static async getComUserByCarID(Model_Name, Model_Year) {
+    try {
+      const res = await db.any(`SELECT comments.comment, users.username, comments.modelname, comments.modelyear
+      FROM comments
+         INNER JOIN users
+          on comments.user_id = users.id
+         WHERE comments.modelname = '${Model_Name}' AND comments.modelyear = ${Model_Year};`);
+      console.log('Comment and User by CarID QUERY: ', res);
+      return res;
+    } catch (error) {
+      console.error('ERROR: ', error);
+    }
+  }
 }
+
+
 
 module.exports = VehicleModel; 

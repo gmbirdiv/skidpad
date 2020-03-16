@@ -31,15 +31,21 @@ res.render('template', {
 });
 
 /* POST comments to db */
+// router.post('/', async function(req, res) {
+//   const { car_id, user_id, comment } = req.body;
+//   const postData = await CarModel.addComment(car_id, user_id, comment);
+//   const id = postData.car_id
+//   console.log(postData);
+//   res.redirect("back");
+// });
+
 router.post('/', async function(req, res) {
-  const { car_id, user_id, comment } = req.body;
-  const postData = await CarModel.addComment(car_id, user_id, comment);
-  const id = postData.car_id
+  const { model_name, model_year,  user_id, comment } = req.body;
+  const postData = await VehicleModel.addComment(model_name, model_year, user_id, comment);
+  // const id = postData.car_id
   console.log(postData);
   res.redirect("back");
 });
-
-
 
 
 module.exports = router;
