@@ -14,21 +14,8 @@ const userValidationRules = () => {
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
-    return (
-      next(),
-      res.render('template', {
-        locals: {
-          title: 'SkidPad.io',
-          is_logged_in: req.session.is_logged_in
-        },
-        partials: {
-          partial: 'partial-signupsuccess'
-        }
-      })
-    );
+    return next(), res.redirect('/');
   }
-
-  console.log(errors.errors);
 
   return res.render('template', {
     locals: {

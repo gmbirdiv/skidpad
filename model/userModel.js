@@ -28,8 +28,6 @@ class User {
         `SELECT id, username, password FROM users WHERE username = $1;`,
         [this.username]
       );
-      console.log(response);
-      // console.log(response,'MOFO')
 
       const isValid = this.checkPassword(response.password);
 
@@ -37,7 +35,6 @@ class User {
         const { id, username } = response;
         return { isValid, user_id: id, username };
       } else {
-        console.log('failure');
         return isValid;
       }
     } catch (e) {

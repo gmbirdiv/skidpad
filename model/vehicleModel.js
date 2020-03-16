@@ -36,7 +36,6 @@ class VehicleModel {
       const res = await db.any(`SELECT *
     FROM reviews
     WHERE reviews.modelyear = ${ModelYear} AND reviews.modelname = '${Model_Name}';`);
-      console.log('REV ID QUERY: ', res);
       return res;
     } catch (error) {
       console.error('ERROR: ', error);
@@ -48,7 +47,6 @@ class VehicleModel {
         `INSERT INTO comments (modelname, modelyear, user_id, comment) VALUES ($1, $2, $3, $4) RETURNING id`,
         [Model_Name, ModelYear, user_id, comment]
       );
-      console.log(res);
       return res;
     } catch (error) {
       console.error('ERROR: ', error);
@@ -62,7 +60,6 @@ class VehicleModel {
          INNER JOIN users
           on comments.user_id = users.id
          WHERE comments.modelname = '${Model_Name}' AND comments.modelyear = ${Model_Year};`);
-      console.log('Comment and User by CarID QUERY: ', res);
       return res;
     } catch (error) {
       console.error('ERROR: ', error);

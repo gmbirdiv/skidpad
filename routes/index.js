@@ -7,11 +7,9 @@ router.get('/', async function(req, res, next) {
   const { year, make } = req.query;
   let makes = await VehicleModel.getMakes();
   makes = makes.Results;
-  console.log(year, make);
 
   let carrs = await VehicleModel.getModels(make, year);
   carrs = carrs.Results;
-  console.log(carrs);
 
   res.render('template', {
     locals: {
@@ -35,7 +33,6 @@ router.post('/', async function(req, res) {
     user_id,
     comment
   );
-  console.log(postData);
   res.redirect('back');
 });
 

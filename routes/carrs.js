@@ -7,7 +7,6 @@ router.get('/:year/:make/:model', async (req, res, next) => {
   const make = req.params.make;
   const model = req.params.model;
   const rev = await VehicleModel.getRevById(model, year);
-  console.log(rev);
   const com = await VehicleModel.getComUserByCarID(model, year);
 
   res.render('template', {
