@@ -3,7 +3,6 @@ const router = express.Router();
 const CarModel = require('../model/carModel');
 const VehicleModel = require('../model/vehicleModel');
 
-
 /* GET home page. */
 router.get('/', async function(req, res, next) {
 const { year, make } = req.query;
@@ -14,7 +13,6 @@ console.log(year, make)
 let carrs = await VehicleModel.getModels(make, year); 
 carrs = carrs.Results
 console.log(carrs)
-
 
 res.render('template', {
     locals: {

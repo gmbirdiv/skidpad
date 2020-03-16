@@ -8,7 +8,7 @@ const express = require('express'),
   logger = require('morgan'),
   expressValidator = require('express-validator'),
   flash = require('express-flash-notification'),
-  es6Renderer = require('express-es6-template-engine');
+  es6Renderer = require('express-es6-template-engine'),
   axios = require('axios'); 
   // jquery = require('jquery');
 
@@ -19,7 +19,6 @@ const indexRouter = require('./routes/index'),
   usersRouter = require('./routes/users');
 
 const app = express();
-
 
 app.engine('html', es6Renderer);
 app.set('views', './views');

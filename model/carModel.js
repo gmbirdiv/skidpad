@@ -56,7 +56,9 @@ class CarModel {
   }
   static async getComUserByCarID(id) {
     try {
+
       const res = await db.any(`SELECT comments.comment, users.username, cars.make, cars.model
+
       FROM comments
         INNER JOIN cars
           ON comments.car_id = cars.id
