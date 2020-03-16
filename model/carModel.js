@@ -54,6 +54,7 @@ class CarModel {
       return error;
     }
   }
+
   static async getComUserByCarID(id) {
     try {
       const res = await db.any(`SELECT comments.comment, users.username, comments.likes, comments.dislikes, cars.make, cars.model

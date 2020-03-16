@@ -18,7 +18,7 @@
 <h1>Comments:</h1>
 ${com.map(entry => `
 <li><strong>User: ${entry.username}</strong> ${entry.comment}</li>
-<li>Likes: ${entry.likes} Dislikes: ${entry.dislikes}</li>
+
 <hr />
 
 ` ).join('')} ${ (!!is_logged_in) ? `
