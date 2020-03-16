@@ -7,11 +7,51 @@
       <h2 class="subtitle">
         More than just transportation.
       </h2>
+      <form action="/" method="get">
+        <div class="control">
+          <div class="select">
+            <select name="year">
+              <option>2020</option>
+              <option>2019</option>
+              <option>2018</option>
+              <option>2017</option>
+              <option>2016</option>
+              <option>2015</option>
+              <option>2014</option>
+              <option>2013</option>
+              <option>2012</option>
+              <option>2011</option>
+              <option>2010</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="control">
+          <div class="select">
+            <select name="make">
+              ${makes.map(entry => `<option>${entry.MakeName}</option>`)}</p>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="buttons" type="submit" id="submit_button">
+            <button class="vehicle-btn button is-dark"> Get Carrs</button>
+        </div>
+        </form>
+        
     </div>
   </div>
 </section>
 <div class="buttons">
-  <a href="/vehicles"
-    ><button class="vehicle-btn button is-dark">Vehicles</button></a
-  >
+  <a href="/vehicles">
+    <button class="vehicle-btn button is-dark">Vehicles</button>
+  </a>
 </div>
+
+
+<input id="inputYear" value="all" type="hidden">
+<input id="inputMake" value="all" type="hidden">
+<input id="inputModel" value="all" type="hidden">
+
+
+${carrs.map(entry => `<a href="carrs/${year}/${entry.Make_Name}/${entry.Model_Name}"><p>${entry.Make_Name} ${entry.Model_Name}</p></a>`).join('')}
