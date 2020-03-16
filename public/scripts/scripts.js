@@ -1,11 +1,9 @@
-window.onload = function(){ 
 
-const dropdown = document.querySelector('.dropdown');
 
-dropdown.addEventListener('click', function(event) {
-  event.stopPropagation();
-  dropdown.classList.toggle('is-active');
-  console.log('clicked;')
-});
+// const makeDropdown = document.querySelector('#make');
 
-}
+// makeDropdown.addEventListener('click', function(event) {
+//   event.stopPropagation();
+//   makeDropdown.classList.toggle('is-active');
+//   console.log('clicked;')
+// });

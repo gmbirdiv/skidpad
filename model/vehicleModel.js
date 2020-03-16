@@ -19,12 +19,6 @@ class VehicleModel {
     }
   }
 
-
-
-
-
-
-
   static async getModels(Make_Name, ModelYear){
       try {
           const response = await axios ({
@@ -38,6 +32,15 @@ class VehicleModel {
       }
   }
 
+  // static async getById(ModelYear, Make_Name, Model_Name){
+  //   try{
+  //     const response = await axios ({
+  //       url:
+  //     })
+  //   }catch(e){
+  //     return e 
+  //   }
+  // }
 
 
 }

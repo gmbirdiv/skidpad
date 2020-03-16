@@ -7,6 +7,38 @@
       <h2 class="subtitle">
         More than just transportation.
       </h2>
+      <form action="/" method="get">
+        <div class="control">
+          <div class="select">
+            <select name="year">
+              <option>2020</option>
+              <option>2019</option>
+              <option>2018</option>
+              <option>2017</option>
+              <option>2016</option>
+              <option>2015</option>
+              <option>2014</option>
+              <option>2013</option>
+              <option>2012</option>
+              <option>2011</option>
+              <option>2010</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="control">
+          <div class="select">
+            <select name="make">
+              ${makes.map(entry => `<option>${entry.MakeName}</option>`)}</p>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="buttons" type="submit" id="submit_button">
+            <button class="vehicle-btn button is-dark"> Get Carrs</button>
+        </div>
+        </form>
+        
     </div>
   </div>
 </section>
@@ -15,116 +47,11 @@
     <button class="vehicle-btn button is-dark">Vehicles</button>
   </a>
 </div>
-<div class="buttons">
-  <a href="/carrs">
-    <button class="vehicle-btn button is-dark">Carrs</button>
-  </a>
-</div>
-
-<div class="dropdown is-hoverable">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-      <span>Years</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-    <div class="dropdown-content">
-      <div class="dropdown-item">
-       <p>2020</p>
-       <p>2019</p>
-       <p>2018</p>
-       <p>2017</p>
-       <p>2016</p>
-       <p>2015</p>
-       <p>2014</p>
-       <p>2013</p>
-       <p>2012</p>
-       <p>2011</p>
-       <p>2010</p>
-       <p>2009</p>
-       <p>2008</p>
-       <p>2007</p>
-       <p>2006</p>
-       <p>2005</p>
-       <p>2004</p>
-       <p>2003</p>
-       <p>2002</p>
-       <p>2001</p>
-       <p>2000</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 
-<div class="dropdown is-hoverable">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-      <span>Makes</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-    <div class="dropdown-content">
-      <div class="dropdown-item">
-        ${makes.map(entry => `<a href="/carrs"><p>${entry.MakeName}</p></a>`).join('')}</p>
-      </div>
-    </div>
-  </div>
-</div>
+<input id="inputYear" value="all" type="hidden">
+<input id="inputMake" value="all" type="hidden">
+<input id="inputModel" value="all" type="hidden">
 
-<div class="dropdown is-hoverable">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-      <span>Models</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-    <div class="dropdown-content">
-      <div class="dropdown-item">
-        ${carrs.map(entry => `<a href="reviews/2015${entry.Make_Name}${entry.Model_Name}"><p>${entry.Model_Name}</p></a>`).join('')}
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="dropdown">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-      <span>Dropdown button</span>
-      <span class="icon is-small">
-        <!--fontawesome required for the icon-->
-        <i class="fa fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-    <div class="dropdown-content">
-      <a href="#" class="dropdown-item">
-        Dropdown item
-      </a>
-      <a class="dropdown-item">
-        Other dropdown item
-      </a>
-      <a href="#" class="dropdown-item is-active">
-        Active dropdown item
-      </a>
-      <a href="#" class="dropdown-item">
-        Other dropdown item
-      </a>
-      <hr class="dropdown-divider">
-      <a href="#" class="dropdown-item">
-        With a divider
-      </a>
-    </div>
-  </div>
-</div>
-
+${carrs.map(entry => `<a href="carrs/${year}/${entry.Make_Name}/${entry.Model_Name}"><p>${entry.Make_Name} ${entry.Model_Name}</p></a>`).join('')}
