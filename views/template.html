@@ -8,6 +8,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
     <script
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
@@ -22,30 +28,30 @@
         </a>
       </div>
       <div class="navbar-end">
-        <!-- navbar items -->
         <div class="navbar-item">
           <div class="buttons">
-            ${
-              (!!is_logged_in) ?
-              `
-              <a class="button is-dark" href="/users/logout">
-                Logout
-              </a>
-              ` 
-              :
-              `
-              <a class="button is-dark" href="/users/login">
+            ${ (!!is_logged_in) ? `
+            <a class="button is-dark" href="/users/logout">
+              Logout
+            </a>
+            ` : `
+            <a class="button is-dark" href="/users/login">
               Login
             </a>
             <a class="button is-dark" href="/users/signup">
-              <strong>Sign up</strong>
+              <strong>Sign Up</strong>
             </a>
-            `
-          }
+            ` }
           </div>
         </div>
       </div>
     </nav>
     <main>${partial}</main>
   </body>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+    crossorigin="anonymous"
+  ></script>
+  <script src="/scripts/scripts.js"></script>
 </html>

@@ -1,19 +1,5 @@
-const express = require('express'),
-  session = require('express-session'),
-  FileStore = require(`session-file-store`)(session),
-  path = require('path'),
-  cookieParser = require('cookie-parser'),
-  logger = require('morgan'),
-  flash = require('connect-flash'),
-  expressValidator = require('express-validator'),
-  es6Renderer = require('express-es6-template-engine');
-
-const indexRouter = require('./routes/index'),
-  vehiclesRouter = require('./routes/vehicles'),
-  reviewRouter = require('./routes/reviews'),
-  usersRouter = require('./routes/users');
-
 const { body, validationResult } = require('express-validator');
+
 const userValidationRules = () => {
   return [
     // username must be 5 chars long
@@ -28,11 +14,14 @@ const userValidationRules = () => {
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
-    return next();
+    return next(), res.redirect('/');
   }
+<<<<<<< HEAD
  
 
   console.log(errors.errors)
+=======
+>>>>>>> 7262101e3ba07314a5f37ec0e1029e545c99c68e
 
   return res.render('template', {
     locals: {
