@@ -16,12 +16,6 @@ const validate = (req, res, next) => {
   if (errors.isEmpty()) {
     return next(), res.redirect('/');
   }
-<<<<<<< HEAD
- 
-
-  console.log(errors.errors)
-=======
->>>>>>> 7262101e3ba07314a5f37ec0e1029e545c99c68e
 
   return res.render('template', {
     locals: {

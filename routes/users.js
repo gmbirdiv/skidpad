@@ -68,10 +68,6 @@ router.post('/signup', userValidationRules(), validate, async function(
       password: req.body.password
     })
     .then(user => res.json(user));
-<<<<<<< HEAD
-  // res.sendStatus(200);
-=======
->>>>>>> 7262101e3ba07314a5f37ec0e1029e545c99c68e
 });
 
 router.get('/logout', function(req, res) {
